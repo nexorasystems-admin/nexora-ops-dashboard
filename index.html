@@ -27,30 +27,31 @@
     .pulse-dot { box-shadow: 0 0 10px #10B981; }
   </style>
 </head>
-<body class="dark bg-[#070A11] text-slate-200 min-h-screen p-4 sm:p-6 pb-24">
+<body class="dark bg-[#070A11] text-slate-200 min-h-screen p-4 sm:p-6 pb-28">
 
-  <!-- Header -->
-  <header class="flex items-center justify-between pb-5 border-b border-slate-800/80 mb-5">
+  <!-- Interactive Top Profile Bar (Tap anywhere here to open Profile Modal) -->
+  <header onclick="openProfileModal()" class="flex items-center justify-between pb-4 border-b border-slate-800/80 mb-5 cursor-pointer active:scale-95 transition-transform">
     <div class="flex items-center space-x-3">
-      <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-cyan-600 to-blue-600 flex items-center justify-center font-extrabold text-white text-lg shadow-lg shadow-cyan-500/20">
+      <!-- Nexora Glow Logo -->
+      <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-cyan-500 via-blue-600 to-indigo-600 flex items-center justify-center font-black text-white text-xl shadow-lg shadow-cyan-500/30 border border-cyan-400/30">
         N
       </div>
       <div>
         <h1 class="text-sm font-extrabold tracking-wider uppercase text-white flex items-center gap-2">
           Nexora Systems
-          <span class="text-[10px] bg-cyan-950 text-cyan-400 border border-cyan-800 px-1.5 py-0.5 rounded mono">PROD</span>
+          <span class="text-[9px] bg-cyan-950 text-cyan-400 border border-cyan-800 px-1.5 py-0.5 rounded mono">PROD HQ</span>
         </h1>
-        <p class="text-[11px] text-slate-400 mono">Avdhesh Pratap Singh Ranawat</p>
+        <p class="text-[11px] text-cyan-400 mono font-medium">Avdhesh Pratap Singh Ranawat ▾</p>
       </div>
     </div>
     
-    <div class="flex items-center gap-2">
-      <button onclick="toggleTheme()" class="p-2 rounded-xl bg-slate-800/60 border border-slate-700 text-slate-300 text-xs mono hover:bg-slate-700">
+    <div class="flex items-center gap-2" onclick="event.stopPropagation()">
+      <button onclick="toggleTheme()" class="p-2 rounded-xl bg-slate-800/60 border border-slate-700 text-slate-300 text-xs mono">
         <span id="themeIcon">☀️</span>
       </button>
       <div class="flex items-center space-x-1.5 bg-emerald-950/40 border border-emerald-800/50 px-2.5 py-1.5 rounded-full">
         <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse pulse-dot"></span>
-        <span class="text-[10px] text-emerald-400 font-bold mono">ACTIVE</span>
+        <span class="text-[10px] text-emerald-400 font-bold mono">LIVE</span>
       </div>
     </div>
   </header>
@@ -59,11 +60,11 @@
   <nav class="flex space-x-2 overflow-x-auto pb-2 mb-6 scrollbar-none">
     <button onclick="switchTab('overview')" id="tab-overview" class="px-3.5 py-1.5 rounded-xl text-xs font-semibold mono bg-cyan-600 text-white whitespace-nowrap">Overview</button>
     <button onclick="switchTab('docs')" id="tab-docs" class="px-3.5 py-1.5 rounded-xl text-xs font-semibold mono bg-slate-800/60 text-slate-400 whitespace-nowrap">PDF Vault</button>
-    <button onclick="switchTab('certs')" id="tab-certs" class="px-3.5 py-1.5 rounded-xl text-xs font-semibold mono bg-slate-800/60 text-slate-400 whitespace-nowrap">Credentials</button>
+    <button onclick="switchTab('certs')" id="tab-certs" class="px-3.5 py-1.5 rounded-xl text-xs font-semibold mono bg-slate-800/60 text-slate-400 whitespace-nowrap">Certificates</button>
     <button onclick="switchTab('outreach')" id="tab-outreach" class="px-3.5 py-1.5 rounded-xl text-xs font-semibold mono bg-slate-800/60 text-slate-400 whitespace-nowrap">Outreach & Letters</button>
   </nav>
 
-  <!-- TAB 1: OVERVIEW & REAL-TIME GRAPH -->
+  <!-- TAB 1: OVERVIEW -->
   <main id="view-overview" class="space-y-6">
     <section class="grid grid-cols-2 gap-3">
       <div class="card rounded-2xl p-4">
@@ -78,7 +79,7 @@
       </div>
     </section>
 
-    <!-- Interactive Graph Container -->
+    <!-- Telemetry Graph -->
     <section class="card rounded-2xl p-4">
       <div class="flex justify-between items-center mb-3">
         <span class="text-xs uppercase font-bold text-slate-300 mono">// Pipeline Latency Telemetry (ms)</span>
@@ -89,22 +90,22 @@
       </div>
     </section>
 
-    <!-- 1-Year Build Horizon Progress -->
+    <!-- 1-Year Build Horizon -->
     <section class="card rounded-2xl p-4">
       <div class="flex justify-between items-center mb-2">
-        <span class="text-xs uppercase font-bold text-slate-300 mono">// 1-Year Scaling Goal</span>
+        <span class="text-xs uppercase font-bold text-slate-300 mono">// 1-Year Build Horizon</span>
         <span class="text-xs text-cyan-400 mono font-bold">Phase 1 / 4</span>
       </div>
       <div class="w-full bg-slate-800/80 rounded-full h-2 mb-2 overflow-hidden">
         <div class="bg-gradient-to-r from-cyan-500 to-blue-600 h-2 rounded-full" style="width: 25%"></div>
       </div>
       <div class="text-[11px] text-slate-400 flex justify-between mono">
-        <span>Foundation & Ingestion Pipeline</span>
+        <span>Foundation Pipelines</span>
         <span class="text-slate-300">25% Done</span>
       </div>
     </section>
 
-    <!-- Production Repositories -->
+    <!-- Project Card -->
     <section class="space-y-3">
       <h2 class="text-xs uppercase font-bold text-slate-400 mono px-1">// Core Architecture Repos</h2>
       <div class="card rounded-2xl p-4 border-l-4 border-l-cyan-400">
@@ -121,62 +122,59 @@
     </section>
   </main>
 
-  <!-- TAB 2: PDF VAULT -->
+  <!-- TAB 2: PDF VAULT (With Real Phone File Upload) -->
   <section id="view-docs" class="hidden space-y-4">
-    <div class="card rounded-2xl p-4 flex items-center justify-between">
-      <div class="flex items-center space-x-3">
-        <span class="text-2xl">📄</span>
-        <div>
-          <h3 class="text-xs font-bold text-white">Nexora Systems Capability Deck</h3>
-          <p class="text-[10px] text-slate-400 mono">v1.0 • Technical Specs</p>
-        </div>
-      </div>
-      <button onclick="alert('Drive ya GitHub link add kar sakte ho')" class="px-3 py-1.5 rounded-lg bg-slate-800 border border-slate-700 text-cyan-400 text-xs mono">View</button>
+    <div class="card rounded-2xl p-4 text-center">
+      <h3 class="text-xs font-bold text-white mono uppercase mb-2">Upload Nexora PDF Document</h3>
+      <input type="file" id="pdfFileInput" accept="application/pdf" class="hidden" onchange="handlePdfUpload(event)">
+      <button onclick="document.getElementById('pdfFileInput').click()" class="w-full py-2.5 bg-gradient-to-r from-cyan-600 to-blue-600 text-white rounded-xl text-xs font-bold mono shadow-md active:scale-95 transition-transform">
+        + Select PDF from Phone
+      </button>
     </div>
 
-    <div class="card rounded-2xl p-4 flex items-center justify-between">
-      <div class="flex items-center space-x-3">
-        <span class="text-2xl">📑</span>
-        <div>
-          <h3 class="text-xs font-bold text-white">Security & Latency Whitepaper</h3>
-          <p class="text-[10px] text-slate-400 mono">Enterprise Compliance</p>
+    <!-- Container where uploaded PDFs are listed -->
+    <div id="pdfListContainer" class="space-y-3">
+      <div class="card rounded-2xl p-4 flex items-center justify-between">
+        <div class="flex items-center space-x-3">
+          <span class="text-2xl">📄</span>
+          <div>
+            <h4 class="text-xs font-bold text-white">Nexora Systems Capability Deck</h4>
+            <p class="text-[10px] text-slate-400 mono">Internal Spec • Architecture Blueprint</p>
+          </div>
         </div>
+        <span class="text-[10px] bg-cyan-950 text-cyan-400 border border-cyan-800 px-2 py-1 rounded mono">Saved</span>
       </div>
-      <span class="text-[10px] text-slate-500 mono">Drafting</span>
     </div>
   </section>
 
-  <!-- TAB 3: CREDENTIALS ROADMAP -->
+  <!-- TAB 3: CERTIFICATES & ASSOCIATIONS (Interactive Add) -->
   <section id="view-certs" class="hidden space-y-4">
     <div class="card rounded-2xl p-4">
-      <h3 class="text-xs font-bold text-white mono uppercase mb-3">// Credential Roadmap</h3>
-      <div class="space-y-3">
-        <div class="p-3 bg-slate-900/60 rounded-xl border border-slate-800 flex items-center justify-between">
-          <div class="flex items-center gap-3">
-            <span class="text-xl">🛡️</span>
-            <div>
-              <h4 class="text-xs font-bold text-slate-200">Make.com Operations Specialist</h4>
-              <p class="text-[10px] text-emerald-400 mono">Assessment 2026</p>
-            </div>
-          </div>
-          <span class="text-[10px] bg-cyan-950 text-cyan-400 border border-cyan-800 px-2 py-0.5 rounded mono">Target</span>
-        </div>
+      <h3 class="text-xs font-bold text-white mono uppercase mb-3">// Add Certificate / Credential</h3>
+      <div class="space-y-2">
+        <input type="text" id="certTitle" placeholder="Certificate Title (e.g. AWS Cloud / Make Specialist)" class="w-full p-2.5 rounded-xl bg-slate-900 border border-slate-700 text-xs text-white mono">
+        <input type="text" id="certOrg" placeholder="Issuing Body / Association" class="w-full p-2.5 rounded-xl bg-slate-900 border border-slate-700 text-xs text-white mono">
+        <button onclick="addCertificate()" class="w-full py-2 bg-cyan-600 text-white rounded-xl text-xs font-bold mono active:scale-95">
+          + Save to Nexora Credentials
+        </button>
+      </div>
+    </div>
 
-        <div class="p-3 bg-slate-900/60 rounded-xl border border-slate-800 flex items-center justify-between">
-          <div class="flex items-center gap-3">
-            <span class="text-xl">☁️</span>
-            <div>
-              <h4 class="text-xs font-bold text-slate-200">AWS Cloud Practitioner</h4>
-              <p class="text-[10px] text-slate-400 mono">Target 2027</p>
-            </div>
+    <div id="certListContainer" class="space-y-3">
+      <div class="p-3 bg-slate-900/60 rounded-xl border border-slate-800 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <span class="text-xl">🛡️</span>
+          <div>
+            <h4 class="text-xs font-bold text-slate-200">Make.com Operations Specialist</h4>
+            <p class="text-[10px] text-emerald-400 mono">Assessment Phase 2026</p>
           </div>
-          <span class="text-[10px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded mono">Roadmap</span>
         </div>
+        <span class="text-[10px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded mono">Target</span>
       </div>
     </div>
   </section>
 
-  <!-- TAB 4: OUTREACH & CLIENT LETTERS -->
+  <!-- TAB 4: OUTREACH & LETTERS -->
   <section id="view-outreach" class="hidden space-y-4">
     <div class="card rounded-2xl p-4">
       <h3 class="text-xs font-bold text-white mono uppercase mb-3">// Dispatched Contacts</h3>
@@ -188,7 +186,6 @@
           </div>
           <span class="text-[10px] bg-cyan-950 text-cyan-400 border border-cyan-800 px-2 py-0.5 rounded mono">Pitched</span>
         </div>
-
         <div class="p-3 bg-slate-900/60 rounded-xl border border-slate-800 flex justify-between items-center text-xs">
           <div>
             <div class="font-bold text-slate-200">DS Aqua Save</div>
@@ -199,7 +196,6 @@
       </div>
     </div>
 
-    <!-- Formal Letters -->
     <div class="card rounded-2xl p-4 space-y-3">
       <div class="flex justify-between items-center">
         <h3 class="text-xs font-bold text-white mono uppercase">// Client Engagement Letter</h3>
@@ -216,12 +212,65 @@
     </div>
   </section>
 
+  <!-- INTERACTIVE PROFILE MODAL POPUP -->
+  <div id="profileModal" class="fixed inset-0 bg-black/80 backdrop-blur-md hidden items-center justify-center p-4 z-50">
+    <div class="bg-[#0B1120] border border-cyan-500/30 rounded-3xl p-6 max-w-sm w-full space-y-4 shadow-2xl relative">
+      <button onclick="closeProfileModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-xl">✕</button>
+
+      <!-- Nexora Big Logo -->
+      <div class="text-center pt-2">
+        <div class="w-16 h-16 mx-auto rounded-3xl bg-gradient-to-tr from-cyan-500 via-blue-600 to-indigo-600 flex items-center justify-center font-black text-white text-3xl shadow-xl shadow-cyan-500/40 border-2 border-cyan-400/40 mb-3">
+          N
+        </div>
+        <h2 class="text-base font-extrabold text-white uppercase tracking-wider">Nexora Systems</h2>
+        <p class="text-xs text-cyan-400 mono font-semibold mt-0.5">High-Performance Backend & Automation</p>
+      </div>
+
+      <!-- Description -->
+      <div class="bg-slate-900/80 p-3.5 rounded-2xl border border-slate-800 text-xs text-slate-300 leading-relaxed">
+        Building autonomous data pipelines, low-latency API infrastructure, and production backend integrations for modern businesses and tech firms.
+      </div>
+
+      <!-- Architect Details -->
+      <div class="space-y-2 pt-1 text-xs mono">
+        <div class="flex items-center justify-between p-2.5 rounded-xl bg-slate-900/60 border border-slate-800">
+          <span class="text-slate-400">Founder & Architect:</span>
+          <span class="text-white font-bold">Avdhesh Pratap Singh Ranawat</span>
+        </div>
+
+        <a href="mailto:nexorasystems.in@gmail.com" class="flex items-center justify-between p-2.5 rounded-xl bg-slate-900/60 border border-slate-800 text-slate-300 hover:text-cyan-400">
+          <span class="text-slate-400">Official Gmail:</span>
+          <span class="text-cyan-400">nexorasystems.in@gmail.com</span>
+        </a>
+
+        <a href="https://instagram.com" target="_blank" class="flex items-center justify-between p-2.5 rounded-xl bg-slate-900/60 border border-slate-800 text-slate-300 hover:text-pink-400">
+          <span class="text-slate-400">Instagram:</span>
+          <span class="text-pink-400">@nexorasystems</span>
+        </a>
+      </div>
+
+      <button onclick="closeProfileModal()" class="w-full py-2.5 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded-xl text-xs font-bold mono">
+        Close Window
+      </button>
+    </div>
+  </div>
+
   <!-- Global Footer -->
   <footer class="fixed bottom-0 left-0 right-0 p-3 bg-[#070A11]/90 backdrop-blur-md border-t border-slate-800 text-center z-20">
     <div class="text-[10px] text-slate-500 mono">NEXORA SYSTEMS CORE // AVDHESH PRATAP SINGH RANAWAT</div>
   </footer>
 
   <script>
+    // Profile Modal
+    function openProfileModal() {
+      document.getElementById('profileModal').classList.remove('hidden');
+      document.getElementById('profileModal').classList.add('flex');
+    }
+    function closeProfileModal() {
+      document.getElementById('profileModal').classList.add('hidden');
+      document.getElementById('profileModal').classList.remove('flex');
+    }
+
     // Tab Switching
     function switchTab(tabId) {
       const tabs = ['overview', 'docs', 'certs', 'outreach'];
@@ -233,7 +282,54 @@
       document.getElementById(`tab-${tabId}`).className = 'px-3.5 py-1.5 rounded-xl text-xs font-semibold mono bg-cyan-600 text-white whitespace-nowrap';
     }
 
-    // Dark/Light Theme
+    // Phone PDF Upload Handler
+    function handlePdfUpload(e) {
+      const file = e.target.files[0];
+      if (file) {
+        const container = document.getElementById('pdfListContainer');
+        const card = document.createElement('div');
+        card.className = "card rounded-2xl p-4 flex items-center justify-between";
+        card.innerHTML = `
+          <div class="flex items-center space-x-3">
+            <span class="text-2xl">📑</span>
+            <div>
+              <h4 class="text-xs font-bold text-white">${file.name}</h4>
+              <p class="text-[10px] text-slate-400 mono">Uploaded PDF • ${(file.size / 1024).toFixed(1)} KB</p>
+            </div>
+          </div>
+          <span class="text-[10px] bg-emerald-950 text-emerald-400 border border-emerald-800 px-2 py-1 rounded mono">Saved</span>
+        `;
+        container.prepend(card);
+        alert(`"${file.name}" successfully added to Nexora Vault!`);
+      }
+    }
+
+    // Add Certificate Handler
+    function addCertificate() {
+      const title = document.getElementById('certTitle').value;
+      const org = document.getElementById('certOrg').value;
+      if (!title) { alert('Please enter certificate title!'); return; }
+
+      const container = document.getElementById('certListContainer');
+      const card = document.createElement('div');
+      card.className = "p-3 bg-slate-900/60 rounded-xl border border-slate-800 flex items-center justify-between";
+      card.innerHTML = `
+        <div class="flex items-center gap-3">
+          <span class="text-xl">📜</span>
+          <div>
+            <h4 class="text-xs font-bold text-slate-200">${title}</h4>
+            <p class="text-[10px] text-cyan-400 mono">${org || 'Verified Association'}</p>
+          </div>
+        </div>
+        <span class="text-[10px] bg-emerald-950 text-emerald-400 border border-emerald-800 px-2 py-0.5 rounded mono">Added</span>
+      `;
+      container.prepend(card);
+      document.getElementById('certTitle').value = '';
+      document.getElementById('certOrg').value = '';
+      alert('Certificate saved to credentials!');
+    }
+
+    // Theme Toggle
     function toggleTheme() {
       const body = document.body;
       const isDark = body.classList.contains('dark');
@@ -248,22 +344,21 @@
       }
     }
 
-    // Copy Letter
+    // Copy Letter Helper
     function copyLetter() {
       const text = `Dear Client Leadership,\n\nThank you for partnering with Nexora Systems. We have configured and verified your autonomous lead pipeline.\n\nWarm regards,\nAvdhesh Pratap Singh Ranawat\nNexora Systems Architecture`;
       navigator.clipboard.writeText(text);
       alert('Letter copied to clipboard!');
     }
 
-    // Chart.js Setup
+    // Chart Setup
     window.addEventListener('DOMContentLoaded', () => {
       const ctx = document.getElementById('latencyChart').getContext('2d');
       new Chart(ctx, {
         type: 'line',
         data: {
-          labels: ['Event 1', 'Event 2', 'Event 3', 'Event 4', 'Event 5', 'Event 6'],
+          labels: ['Evt 1', 'Evt 2', 'Evt 3', 'Evt 4', 'Evt 5', 'Evt 6'],
           datasets: [{
-            label: 'Latency (ms)',
             data: [2100, 1950, 1820, 1790, 1810, 1750],
             borderColor: '#06B6D4',
             backgroundColor: 'rgba(6, 182, 212, 0.1)',
